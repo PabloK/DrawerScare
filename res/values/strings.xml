@@ -1,0 +1,12 @@
+<resources>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Drawer Scare</string>
+    <string name="app_name">Drawer Scare</string>
+    <string name="start">Start</string>
+    <string name="scared">Did you get scared?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="share">Share</string>
+    <string name="skip">Skip</string>
+    <string name="wanttoshare">Share your scare?</string>
+</resources>
