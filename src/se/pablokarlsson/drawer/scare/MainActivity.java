@@ -35,10 +35,11 @@ public class MainActivity extends Activity {
         final PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         mWakeLock = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK | PowerManager.ON_AFTER_RELEASE,"");
         AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        if (am.getStreamVolume(AudioManager.STREAM_MUSIC) < 20){
+        if (am.getStreamVolume(AudioManager.STREAM_MUSIC) < 10){
     		Toast.makeText(this, "Don't forget to crank up the media sound!", Toast.LENGTH_LONG).show();
         }
         mWakeLock.acquire();
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
         
     }
     
