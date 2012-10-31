@@ -9,14 +9,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="185dp"
         android:max="120"
         android:maxHeight="6dip"
         android:minHeight="6dip"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:progress="0"
-        android:progressDrawable="@drawable/seekbar_bg" />
+        android:progressDrawable="@drawable/seekbar_bg"
+        android:scrollbars="horizontal|vertical" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/timeUntilScare"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="30dp"
+        android:paddingLeft="35dp"
+        android:text="0"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignParentLeft="true"
+        android:gravity="right"
+        android:paddingRight="35dp"
+        android:text="120"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/startScareButton"
@@ -24,10 +49,22 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/timeUntilScare"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="91dp"
         android:background="@drawable/button_bg"
         android:fadingEdge="horizontal|none"
         android:minHeight="40dip"
         android:text="@string/start" />
+
+    <CheckBox
+        android:id="@+id/cuseKnocking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/timeUntilScare"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:defaultValue="true"
+        android:button="@drawable/check_box"
+        android:text="Knocking sound"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

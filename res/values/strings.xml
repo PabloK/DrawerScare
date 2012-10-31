@@ -9,4 +9,6 @@
     <string name="share">Share</string>
     <string name="skip">Skip</string>
     <string name="wanttoshare">Share your scare?</string>
+    <string name="zero">0</string>
+    <string name="maxTime">2 min</string>
 </resources>
