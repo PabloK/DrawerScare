@@ -56,13 +56,13 @@
         android:text="@string/start" />
 
     <CheckBox
-        android:id="@+id/cuseKnocking"
+        android:id="@+id/useKnocking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/timeUntilScare"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
-        android:defaultValue="true"
+		android:enabled="true"
         android:button="@drawable/check_box"
         android:text="Knocking sound"
         android:textColor="#FFFFFF" />

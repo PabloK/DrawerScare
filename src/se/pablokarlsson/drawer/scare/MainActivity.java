@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -40,7 +41,8 @@ public class MainActivity extends Activity {
         }
         mWakeLock.acquire();
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
-        
+        CheckBox useKnocking = (CheckBox) findViewById(R.id.useKnocking);
+        useKnocking.setChecked(true);
     }
     
     @Override
@@ -56,8 +58,10 @@ public class MainActivity extends Activity {
 
 	private void startScare() {
 		SeekBar timeUntilScare = (SeekBar) findViewById(R.id.timeUntilScare);
+		CheckBox useKnocking = (CheckBox) findViewById(R.id.useKnocking);
 		Intent scareSomeOne = new Intent(this, ScareService.class);
 		scareSomeOne.putExtra("timeUntilScare", timeUntilScare.getProgress());
+		scareSomeOne.putExtra("useKnocking", useKnocking.isChecked());
 		startService(scareSomeOne);
 		
 		// TODO here we could switch to a black screen

@@ -11,6 +11,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
@@ -38,7 +39,7 @@ public class ScareService extends Service {
 			this.processId = msg.arg1;
 			this.processRunning = true;
 			int timeUntilScare = msg.arg2;
-			
+			Boolean useKnocking = msg.getData().getBoolean("useKnocking", true);
 			// Wait the initial time!
 			android.os.SystemClock.sleep(timeUntilScare*1000 + 2000);
 			
@@ -50,7 +51,9 @@ public class ScareService extends Service {
 			// Play sounds at regular intervals until we stop the service			
 			while (processRunning){
 				int randomKnock = (Math.random() > 0.5)? sKnock : sKnock2;
-				this.streamId = sounds.play(randomKnock, 1.0f, 1.0f, 1, 0, 1);
+				if (useKnocking) {
+					this.streamId = sounds.play(randomKnock, 1.0f, 1.0f, 1, 0, 1);
+				}
 				android.os.SystemClock.sleep((long) (5000 + Math.random()*10000));
 			}
 			stopSelf(this.processId);
@@ -81,6 +84,10 @@ public class ScareService extends Service {
 		}
 		// Unimplemented knowingly
 		public void onAccuracyChanged(Sensor sensor, int accuracy) {}
+		public void sendMessage(Message msg, Message msg2) {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 
 	private SoundPool sounds;
@@ -105,10 +112,15 @@ public class ScareService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		int timeUntilScare = intent.getIntExtra("timeUntilScare", 0);
+		Boolean useKnocking = intent.getBooleanExtra("useKnocking", true);
 		Toast.makeText(this, "Starting scare in " + timeUntilScare + " seconds!", Toast.LENGTH_SHORT).show();
 		Message msg = mServiceHandler.obtainMessage();
+		Bundle bundle = new Bundle();
+		bundle.putBoolean("useKnocking", useKnocking);
 		msg.arg1 = startId;
 		msg.arg2 = timeUntilScare;
+		msg.setData(bundle);
+		
 		mServiceHandler.sendMessage(msg);
 
 		return START_STICKY;
